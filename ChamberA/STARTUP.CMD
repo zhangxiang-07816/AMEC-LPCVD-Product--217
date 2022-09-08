@@ -1,0 +1,7 @@
+ld(1,0,"/2/vx_R2H_DLink.out")
+ld(1,0,"/2/vx_R2H_ILink.out")
+ld(1,0,"/2/vx_R2H_ExtModule.out")
+ld(1,0,"/2/vx_R2H_EthModule.out")
+ld(1,0,"/2/vx_R2H_Task.out")
+ld(1,0,"/2/ChamberA.out")
+taskSpawn("vx_LPCVD_Alpha_Startup_Ex",100,0x1000000,0x20000,vx_LPCVD_Alpha_Startup_Ex,"/2/variable_catalogue.xml","/2/io_list.xml",0,0,0,0)

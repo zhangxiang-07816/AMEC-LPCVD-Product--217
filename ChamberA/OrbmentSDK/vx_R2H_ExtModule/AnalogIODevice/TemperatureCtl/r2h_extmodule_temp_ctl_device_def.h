@@ -1,0 +1,750 @@
+/*
+ * r2h_extmodule_temp_ctl_device_def.h
+ *
+ *  Created on: 2018-7-23
+ *      Author: CrazyHein
+ */
+
+#ifndef R2H_EXTMODULE_TEMP_CTL_DEVICE_DEF_H_
+#define R2H_EXTMODULE_TEMP_CTL_DEVICE_DEF_H_
+
+#include "../../r2h_extmodule_data_type.h"
+
+#define R2H_TC_DEVICE_NUM_OF_CHANNEL									(4)
+
+#pragma pack(2)
+
+typedef enum R2H_TC_DEVICE_FUNCTION_SWITCH
+{
+	R2H_TC_DEVICE_FUNCTION_ENABLE 					= 0,
+	R2H_TC_DEVICE_FUNCTION_DISABLE 					= 1,
+	
+	__R2H_TC_DEVICE_FUNCTION_SWITCH					= 0xFFFFFFFF
+}R2H_TC_DEVICE_FUNCTION_SWITCH_T;
+
+typedef enum R2H_TC_CHANNEL_FUNCTION_SWITCH
+{
+	R2H_TC_CHANNEL_FUNCTION_ENABLE 					= 0,
+	R2H_TC_CHANNEL_FUNCTION_DISABLE 				= 1,
+	
+	__R2H_TC_CHANNEL_FUNCTION_SWITCH				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_FUNCTION_SWITCH_T;
+
+typedef union R2H_TC_DEVICE_X_STATUS
+{
+	R2H_UINT16 		device_x_status;
+	struct
+	{
+		R2H_UINT16 	module_ready_flag				: 1;
+		R2H_UINT16 	operation_mode					: 1;
+		R2H_UINT16 	error_flag						: 1;
+		R2H_UINT16 	hardware_error_flag				: 1;
+		R2H_UINT16 	ch0_auto_tuning_status			: 1;
+		R2H_UINT16 	ch1_auto_tuning_status			: 1;
+		R2H_UINT16 	ch2_auto_tuning_status			: 1;
+		R2H_UINT16 	ch3_auto_tuning_status			: 1;
+		R2H_UINT16 	setting_value_backup_completion	: 1;
+		R2H_UINT16 	default_vaule_write_completion	: 1;
+		R2H_UINT16 	setting_value_backup_failure	: 1;
+		R2H_UINT16 	setting_change_completion		: 1;
+		R2H_UINT16 	ch0_alert_flag					: 1;
+		R2H_UINT16 	ch1_alert_flag					: 1;
+		R2H_UINT16 	ch2_alert_flag					: 1;
+		R2H_UINT16 	ch3_alert_flag					: 1;
+	};
+}R2H_TC_DEVICE_X_STATUS_T;
+
+typedef union R2H_TC_CHANNEL_ALERT_DEFINITION
+{
+	R2H_UINT16 		alert_definition_code;
+	struct
+	{
+		R2H_UINT16	input_range_upper_limit 			: 1;
+		R2H_UINT16	input_range_lower_limit 			: 1;
+		R2H_UINT16	dummy_bit2 							: 1;
+		R2H_UINT16	dummy_bit3 							: 1;
+		R2H_UINT16	rate_alarm_upper_limit 				: 1;
+		R2H_UINT16	rate_alarm_lower_limit 				: 1;
+		R2H_UINT16	dummy_bit6 							: 1;
+		R2H_UINT16	dummy_bit7 							: 1;
+		R2H_UINT16	alert1 								: 1;
+		R2H_UINT16	alert2 								: 1;
+		R2H_UINT16	alert3 								: 1;
+		R2H_UINT16	alert4 								: 1;
+		R2H_UINT16	heater_disconnection 				: 1;
+		R2H_UINT16	loop_disconnection 					: 1;
+		R2H_UINT16	output_off_time_current_error 		: 1;
+		R2H_UINT16	dummy_bit15 						: 1;
+	};
+}R2H_TC_CHANNEL_ALERT_DEFINITION_T;
+
+typedef union R2H_TC_CHANNEL_SELF_TUNING_FLAG
+{
+	R2H_UINT16 		slef_tuning_flag;
+	struct
+	{
+		R2H_UINT16	pid_parameter_auto_correction 						: 1;
+		R2H_UINT16	simultaneous_rise_parameter_correction 				: 1;
+		R2H_UINT16	dummy_bit2 											: 1;
+		R2H_UINT16	dummy_bit3 											: 1;
+		R2H_UINT16	dummy_bit4 											: 1;
+		R2H_UINT16	dummy_bit5 											: 1;
+		R2H_UINT16	dummy_bit6 											: 1;
+		R2H_UINT16	dummy_bit7 											: 1;
+		R2H_UINT16	self_tuning_disable_status 							: 1;
+		R2H_UINT16	simultaneous_rise_parameter_correction_error 		: 1;
+		R2H_UINT16	self_tuning_error 									: 1;
+		R2H_UINT16	dummy_bit11 										: 1;
+		R2H_UINT16	dummy_bit12 										: 1;
+		R2H_UINT16	dummy_bit13 										: 1;
+		R2H_UINT16	dummy_bit14 										: 1;
+		R2H_UINT16	dummy_bit15 										: 1;
+	};
+}R2H_TC_CHANNEL_SELF_TUNING_FLAG_T;
+
+typedef union R2H_TC_CHANNEL_SIMULTANEOUS_RISE_PARAM_FLAG
+{
+	R2H_UINT16 		simultaneous_rise_parameter_flag;
+	struct
+	{
+		R2H_UINT16	simultaneous_rise_parameter_calculation_completion 					: 1;
+		R2H_UINT16	simultaneous_rise_parameter_calculation_error 						: 1;
+		R2H_UINT16	simultaneous_rise_parameter_calculation_disable 					: 1;
+		R2H_UINT16	dummy_bit3 															: 1;
+		R2H_UINT16	dummy_bit4 															: 1;
+		R2H_UINT16	dummy_bit5 															: 1;
+		R2H_UINT16	dummy_bit6 															: 1;
+		R2H_UINT16	dummy_bit7 															: 1;
+		R2H_UINT16	dummy_bit8 															: 1;
+		R2H_UINT16	dummy_bit9 															: 1;
+		R2H_UINT16	dummy_bit10 														: 1;
+		R2H_UINT16	dummy_bit11 														: 1;
+		R2H_UINT16	dummy_bit12 														: 1;
+		R2H_UINT16	dummy_bit13 														: 1;
+		R2H_UINT16	dummy_bit14 														: 1;
+		R2H_UINT16	dummy_bit15 														: 1;
+	};
+}R2H_TC_CHANNEL_SIMULTANEOUS_RISE_PARAM_FLAG_T;
+
+
+typedef union R2H_TC_CHANNEL_FF_VALUE_TUNING_FLAG
+{
+	R2H_UINT16 		ff_value_tuning_flag;
+	struct
+	{
+		R2H_UINT16	ff_value_is_automatically_set 	: 1;
+		R2H_UINT16	ff_value_tuning_start 			: 1;
+		R2H_UINT16	dummy_bit2 						: 1;
+		R2H_UINT16	dummy_bit3 						: 1;
+		R2H_UINT16	dummy_bit4 						: 1;
+		R2H_UINT16	dummy_bit5 						: 1;
+		R2H_UINT16	dummy_bit6 						: 1;
+		R2H_UINT16	dummy_bit7 						: 1;
+		R2H_UINT16	ff_value_tuning_error 			: 1;
+		R2H_UINT16	dummy_bit9 						: 1;
+		R2H_UINT16	dummy_bit10 					: 1;
+		R2H_UINT16	dummy_bit11 					: 1;
+		R2H_UINT16	dummy_bit12 					: 1;
+		R2H_UINT16	dummy_bit13 					: 1;
+		R2H_UINT16	dummy_bit14 					: 1;
+		R2H_UINT16	dummy_bit15 					: 1;
+	};
+}R2H_TC_CHANNEL_FF_VALUE_TUNING_FLAG_T;
+
+typedef union R2H_TC_DEVICE_CHANNEL_ENABLE_MASK
+{
+	struct
+	{
+		R2H_UINT8	enable_channel_0 : 1;
+		R2H_UINT8	enable_channel_1 : 1;
+		R2H_UINT8	enable_channel_2 : 1;
+		R2H_UINT8	enable_channel_3 : 1;
+	};
+	R2H_UINT8 enable_mask_value;
+}R2H_TC_DEVICE_CHANNEL_ENABLE_MASK_T;
+
+
+typedef enum R2H_TC_CHANNEL_INPUT_RANGE
+{
+	R2H_TC_CHANNEL_R_TC_0_1700_C					= 1,
+	R2H_TC_CHANNEL_R_TC_0_3000_F					= 105,
+	
+	R2H_TC_CHANNEL_K_TC_0_1300_C					= 2,
+	R2H_TC_CHANNEL_K_TC_0_500_C						= 11,
+	R2H_TC_CHANNEL_K_TC_0_800_C						= 12,
+	R2H_TC_CHANNEL_K_TC_0_400_DC					= 36,
+	R2H_TC_CHANNEL_K_TC_N200_400_DC					= 38,
+	R2H_TC_CHANNEL_K_TC_0_500_DC					= 40,
+	R2H_TC_CHANNEL_K_TC_0_800_DC					= 41,
+	R2H_TC_CHANNEL_K_TC_N200_1300_DC				= 49,
+	R2H_TC_CHANNEL_K_TC_0_1000_F					= 100,
+	R2H_TC_CHANNEL_K_TC_0_2400_F					= 101,
+	R2H_TC_CHANNEL_K_TC_0_1000_DF					= 130,
+	
+	R2H_TC_CHANNEL_J_TC_0_1200_C					= 3,
+	R2H_TC_CHANNEL_J_TC_0_500_C						= 13,
+	R2H_TC_CHANNEL_J_TC_0_800_C						= 14,
+	R2H_TC_CHANNEL_J_TC_0_400_DC					= 37,
+	R2H_TC_CHANNEL_J_TC_0_500_DC					= 42,
+	R2H_TC_CHANNEL_J_TC_0_800_DC					= 43,
+	R2H_TC_CHANNEL_J_TC_N200_1000_DC				= 50,
+	R2H_TC_CHANNEL_J_TC_0_1000_F					= 102,
+	R2H_TC_CHANNEL_J_TC_0_1600_F					= 103,
+	R2H_TC_CHANNEL_J_TC_0_2100_F					= 104,
+	R2H_TC_CHANNEL_J_TC_0_1000_DF					= 131,
+	
+	R2H_TC_CHANNEL_T_TC_N200_400_C					= 4,
+	R2H_TC_CHANNEL_T_TC_0_200_C						= 19,
+	R2H_TC_CHANNEL_T_TC_0_400_C						= 20,
+	R2H_TC_CHANNEL_T_TC_N200_200_C					= 21,
+	R2H_TC_CHANNEL_T_TC_N200_400_DC					= 39,
+	R2H_TC_CHANNEL_T_TC_0_400_DC					= 45,
+	R2H_TC_CHANNEL_T_TC_N300_400_F					= 110,
+	R2H_TC_CHANNEL_T_TC_0_700_F						= 109,
+	R2H_TC_CHANNEL_T_TC_0_700_DF					= 132,
+	
+	R2H_TC_CHANNEL_S_TC_0_1700_C					= 15,
+	R2H_TC_CHANNEL_S_TC_0_3000_F					= 106,
+	
+	R2H_TC_CHANNEL_B_TC_0_1800_C					= 16,
+	R2H_TC_CHANNEL_B_TC_0_3000_F					= 107,
+	
+	R2H_TC_CHANNEL_E_TC_0_400_C						= 17,
+	R2H_TC_CHANNEL_E_TC_0_1000_C					= 18,
+	R2H_TC_CHANNEL_E_TC_0_700_DC					= 44,
+	R2H_TC_CHANNEL_E_TC_N200_1000_DC				= 51,
+	R2H_TC_CHANNEL_E_TC_0_1800_F					= 108,
+	
+	R2H_TC_CHANNEL_N_TC_0_1300_C					= 22,
+	R2H_TC_CHANNEL_N_TC_0_1000_DC					= 52,
+	R2H_TC_CHANNEL_N_TC_0_2300_F					= 111,
+	
+	R2H_TC_CHANNEL_U_TC_N200_200_C					= 26,
+	R2H_TC_CHANNEL_U_TC_0_400_C						= 25,
+	R2H_TC_CHANNEL_U_TC_0_600_DC					= 46,
+	R2H_TC_CHANNEL_U_TC_N300_400_F					= 115,
+	R2H_TC_CHANNEL_U_TC_0_700_F						= 114,
+	
+	R2H_TC_CHANNEL_L_TC_0_400_C						= 27,
+	R2H_TC_CHANNEL_L_TC_0_400_DC					= 47,
+	R2H_TC_CHANNEL_L_TC_0_900_C						= 28,
+	R2H_TC_CHANNEL_L_TC_0_900_DC					= 48,
+	R2H_TC_CHANNEL_L_TC_0_800_F						= 116,
+	R2H_TC_CHANNEL_L_TC_0_1600_F					= 117,
+	
+	R2H_TC_CHANNEL_PL_TC_0_1200_C					= 23,
+	R2H_TC_CHANNEL_PL_TC_0_2300_F					= 112,
+	
+	R2H_TC_CHANNEL_WR_TC_0_2300_C					= 24,
+	R2H_TC_CHANNEL_WR_TC_0_3000_F					= 113,
+	
+	R2H_TC_CHANNEL_PT100_N200_600_DC				= 7,
+	R2H_TC_CHANNEL_PT100_N200_200_DC				= 8,
+	R2H_TC_CHANNEL_PT100_N200_850_DC				= 54,
+	R2H_TC_CHANNEL_PT100_N300_1100_F				= 141,
+	R2H_TC_CHANNEL_PT100_N300_300_DF				= 143,
+	
+	R2H_TC_CHANNEL_JPT100_N200_500_DC				= 5,
+	R2H_TC_CHANNEL_JPT100_N200_200_DC				= 6,
+	R2H_TC_CHANNEL_JPT100_N200_640_DC				= 53,
+	R2H_TC_CHANNEL_JPT100_N300_900_F				= 140,
+	R2H_TC_CHANNEL_JPT100_N300_300_DF				= 142,
+	
+	
+	
+	R2H_TC_CHANNEL_AI_0_4000						= 201,
+	R2H_TC_CHANNEL_AI_0_12000						= 202,
+	R2H_TC_CHANNEL_AI_0_16000						= 203,
+	R2H_TC_CHANNEL_AI_0_20000						= 204,
+	R2H_TC_CHANNEL_AI_0_32000						= 205,
+	
+	R2H_TC_CHANNEL_INVALID_INPUT_RANGE				= 0x10000000,
+	__R2H_TC_CHANNEL_INPUT_RANGE					= 0xFFFFFFFF
+}R2H_TC_CHANNEL_INPUT_RANGE_T;
+
+typedef struct R2H_TC_CHANNEL_INPUT_INFO
+{
+	R2H_INT16										lower;
+	R2H_INT16										upper;
+	R2H_INT16										n_scale;
+	R2H_INT16										p_scale;
+}R2H_TC_CHANNEL_INPUT_INFO_T;
+
+typedef enum R2H_TC_CHANNEL_AT_MODE_SELECTION
+{
+	R2H_TC_CHANNEL_AT_STANADARD_MODE 				= 0x00,
+	R2H_TC_CHANNEL_AT_HIGH_RESPONSE_MODE 			= 0x01,
+	__R2H_TC_CHANNEL_AT_MODE_SELECTION				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_AT_MODE_SELECTION_T;
+
+typedef enum R2H_TC_CHANNEL_SIMULTANEOUS_RISE_STATUS
+{
+	R2H_TC_CHANNEL_SIMULTANEOUS_RISE_IN_PROCESS			= 0x01,
+	R2H_TC_CHANNEL_SIMULTANEOUS_RISE_NOT_IN_PROCESS		= 0x00,
+	__R2H_TC_CHANNEL_SIMULTANEOUS_RISE_STATUS			= 0xFFFFFFFF
+}R2H_TC_CHANNEL_SIMULTANEOUS_RISE_STATUS_T;
+
+typedef enum R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_STATUS
+{
+	R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_STOP					= 0x00,
+	R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_IN_PROGRESS			= 0x01,
+	__R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_STATUS 			= 0xFFFFFFFF 
+}R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_STATUS_T;
+
+typedef enum R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_SIGNAL
+{
+	R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_DISABLE				= 0x00,
+	R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_ENABLE				= 0x01,
+	__R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_SIGNAL 			= 0xFFFFFFFF 
+}R2H_TC_CHANNEL_FF_CONTROL_FORCED_START_SIGNAL_T;
+
+#define R2H_TC_FEED_FORWARD_VALUE_MAX							(+1000)
+#define R2H_TC_FEED_FORWARD_VALUE_MIN							(-1000)
+
+typedef enum R2H_TC_CHANNEL_FF_TUNING_SELECTION
+{
+	R2H_TC_CHANNEL_FF_VALUE_MANUAL_SETTING				= 0x00,
+	R2H_TC_CHANNEL_FF_VALUE_AUTO_SETTING				= 0x01,
+	__R2H_TC_CHANNEL_FF_TUNING_SELECTION 				= 0xFFFFFFFF 
+}R2H_TC_CHANNEL_FF_TUNING_SELECTION_T;
+
+typedef enum R2H_TC_DEVICE_TYPE
+{
+	R2H_TC_DEVICE_RT4 			= 0x01,
+	R2H_TC_DEVICE_RT4_BW		= 0x02,
+	R2H_TC_DEVICE_RT2_TT2 		= 0x03,
+	R2H_TC_DEVICE_RT2_TT2_BW	= 0x04,
+	
+	__R2H_TC_DEVICE_TYPE		= 0xFFFFFFFF
+}R2H_TC_DEVICE_TYPE_T;
+
+typedef enum R2H_TC_DEVICE_CONTROL_MODE
+{
+	R2H_TC_DEVICE_STANDARD_CONTROL					= 0x00,
+	R2H_TC_DEVICE_NORMAL_HEAT_COOL_CONTROL			= 0x01,
+	R2H_TC_DEVICE_EXPAND_HEAT_COOL_CONTROL			= 0x02,
+	R2H_TC_DEVICE_NORMAL_MIX_CONTROL				= 0x03,
+	R2H_TC_DEVICE_EXPAND_MIX_CONTROL				= 0x04,
+	R2H_TC_DEVICE_NORMAL_POS_PROPORTION_CONTROL		= 0x05,
+	R2H_TC_DEVICE_EXPAND_POS_PROPORTION_CONTROL		= 0x06,
+	
+	R2H_TC_DEVICE_INVALID_CONTROL_MODE				= 0xFF,
+	
+	__R2H_TC_DEVICE_CONTROL_MODE					= 0xFFFFFFFF
+}R2H_TC_DEVICE_CONTROL_MODE_T;
+
+typedef enum R2H_TC_CHANNEL_CONTROL_MODE
+{
+	R2H_TC_CHANNEL_STANDARD_CONTROL					= 0x00,
+	R2H_TC_CHANNEL_HEAT_COOL_CONTROL				= 0x01,
+	R2H_TC_CHANNEL_POS_PROPORTION_CONTROL			= 0x02,
+	R2H_TC_CHANNEL_TEMPERATURE_INPUT_ONLY			= 0x80,
+	
+	R2H_TC_CHANNEL_INVALID_CONTROL_MODE				= 0xFF,
+	
+	__R2H_TC_CHANNEL_CONTROL_MODE					= 0xFFFFFFFF
+}R2H_TC_CHANNEL_CONTROL_MODE_T;
+
+typedef enum R2H_TC_DEVICE_SAMPLE_CYCLE
+{
+	R2H_TC_DEVICE_SAMPLE_AT_500 				= 0x00,
+	R2H_TC_DEVICE_SAMPLE_AT_250 				= 0x01,
+	
+	__R2H_TC_DEVICE_SAMPLE_CYCLE				= 0xFFFFFFFF
+}R2H_TC_DEVICE_SAMPLE_CYCLE_T;
+
+
+typedef enum R2H_TC_DEVICE_OPERATION_MODE
+{
+	R2H_TC_DEVICE_OP_SETTING_MODE		= 0x00,
+	R2H_TC_DEVICE_OP_OPERATION_MODE		= 0x01,
+	
+	__R2H_TC_DEVICE_OPERATION_MODE		= 0xFFFFFFFF
+}R2H_TC_DEVICE_OPERATION_MODE_T;
+
+
+typedef enum R2H_TC_CHANNEL_MV_MODE
+{
+	R2H_TC_CHANNEL_AUTOMATIC_MV_MODE			= 0x00,
+	R2H_TC_CHANNEL_MANUAL_MV_MODE				= 0x01,
+	
+	__R2H_TC_CHANNEL_MV_MODE					= 0xFFFFFFFF
+}R2H_TC_CHANNEL_MV_MODE_T;
+
+#define R2H_TC_STANDARD_CONTROL_MV_UP_LIMIT				(1050)
+#define R2H_TC_STANDARD_CONTROL_MV_LOW_LIMIT			(-50)
+#define R2H_TC_HEAT_COOL_CONTROL_MV_UP_LIMIT			(1050)
+#define R2H_TC_HEAT_COOL_CONTROL_MV_LOW_LIMIT			(-1050)
+
+typedef enum R2H_TC_CHANNEL_AUTO_TUNING_STATUS
+{
+	R2H_TC_CHANNEL_AUTO_TUNING_EXECUTING		= 0x01,
+	R2H_TC_CHANNEL_AUTO_TUNING_NOT_EXECUTED		= 0x00,
+	
+	__R2H_TC_CHANNEL_AUTO_TUNING_STATUS			= 0xFFFFFFFF
+}R2H_TC_CHANNEL_AUTO_TUNING_STATUS_T;
+
+typedef enum R2H_TC_CHANNEL_DECIMAL_POINT_POSITION
+{
+	R2H_TC_CHANNEL_NO_DECIMAL_POINT						= 0x00,
+	R2H_TC_CHANNEL_FIRST_DECIMAL_POINT					= 0x01,
+	
+	__R2H_TC_CHANNEL_DECIMAL_POINT_POSITION				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_DECIMAL_POINT_POSITION_T;
+
+#define R2H_TC_ERROR_HISTORY_SLOTS_CNT					(16)
+#define R2H_TC_ERROR_HISTORY_SLOT_SIZE_IN_WORD			(10)
+typedef struct R2H_TC_DEVICE_ERROR_HISTORY_DETAIL
+{
+	R2H_UINT16					error_code;
+	R2H_UINT16					year;
+	R2H_BYTE					day;
+	R2H_BYTE					month;
+	R2H_BYTE					minute;
+	R2H_BYTE					hour;
+	R2H_BYTE					day_of_the_week;
+	R2H_BYTE					second;
+	R2H_UINT16					millisecond;
+}R2H_TC_DEVICE_ERROR_HISTORY_DETAIL_T;
+
+
+#define R2H_TC_ALARM_HISTORY_SLOTS_CNT					(16)
+#define R2H_TC_ALARM_HISTORY_SLOT_SIZE_IN_WORD			(10)
+typedef struct R2H_TC_DEVICE_ALARM_HISTORY_DETAIL
+{
+	R2H_UINT16					alarm_code;
+	R2H_UINT16					year;
+	R2H_BYTE					day;
+	R2H_BYTE					month;
+	R2H_BYTE					minute;
+	R2H_BYTE					hour;
+	R2H_BYTE					day_of_the_week;
+	R2H_BYTE					second;
+	R2H_UINT16					millisecond;
+}R2H_TC_DEVICE_ALARM_HISTORY_DETAIL_T;
+
+typedef enum R2H_TC_DEVICE_COLD_JUNCTION
+{
+	R2H_TC_DEVICE_WITH_STANDARD_COLD_JUNCTION_COMPENSATION			= 0x00,
+	R2H_TC_DEVICE_WITH_CONVERTER_COLD_JUNCTION_COMPENSATION			= 0x01,
+	R2H_TC_DEVICE_WITHOUT_COLD_JUNCTION_COMPENSATION				= 0x02,
+	
+	__R2H_TC_DEVICE_COLD_JUNCTION									= 0xFFFFFFFF
+}R2H_TC_DEVICE_COLD_JUNCTION_T;
+
+#define R2H_TC_CONTROL_OUTPUT_CYCLE_MIN								(0.5)
+#define R2H_TC_CONTROL_OUTPUT_CYCLE_MAX								(100.0)
+
+typedef enum R2H_TC_DEVICE_CONTROL_OUTPUT_CYCLE_UNIT
+{
+	R2H_TC_DEVICE_CONTROL_OUTPUT_CYCLE_IN_SEC						= 0x00,
+	R2H_TC_DEVICE_CONTROL_OUTPUT_CYCLE_IN_100MSEC					= 0x01,
+	__R2H_TC_DEVICE_CONTROL_OUTPUT_CYCLE_UNIT						= 0xFFFFFFFF
+}R2H_TC_DEVICE_CONTROL_OUTPUT_CYCLE_UNIT_T;
+
+typedef enum R2H_TC_CHANNEL_CONTROL_RESPONSE
+{
+	R2H_TC_CHANNEL_CONTROL_RESPONSE_SLOW							= 0x00,
+	R2H_TC_CHANNEL_CONTROL_RESPONSE_NORMAL							= 0x01,
+	R2H_TC_CHANNEL_CONTROL_RESPONSE_FAST							= 0x02,
+	__R2H_TC_CHANNEL_CONTROL_RESPONSE								= 0xFFFFFFFF
+}R2H_TC_CHANNEL_CONTROL_RESPONSE_T;
+
+typedef enum R2H_TC_CHANNEL_STOP_MODE
+{
+	R2H_TC_CHANNEL_STOP_MODE_STOP									= 0x00,
+	R2H_TC_CHANNEL_STOP_MODE_MONITOR								= 0x01,
+	R2H_TC_CHANNEL_STOP_MODE_ALERT									= 0x02,
+	__R2H_TC_CHANNEL_STOP_MODE										= 0xFFFFFFFF
+}R2H_TC_CHANNEL_STOP_MODE_T;
+
+
+typedef enum R2H_TC_CHANNEL_HOLD_CLEAR_FUNCTION
+{
+	R2H_TC_CHANNEL_HOLD_FLAG							= 0x01,
+	R2H_TC_CHANNEL_CLEAR_FLAG							= 0x00,
+	__R2H_TC_CHANNEL_HOLD_CLEAR_FUNCTION				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_HOLD_CLEAR_FUNCTION_T;
+
+typedef struct R2H_TC_CHANNEL_CONTROL_BASIC_PARAM
+{
+	R2H_TC_CHANNEL_HOLD_CLEAR_FUNCTION_T		hold;
+	R2H_TC_CHANNEL_INPUT_RANGE_T				range;
+	R2H_INT16									control_output_period; //default 30.0s range 0.5s-100.0s
+	R2H_TC_CHANNEL_CONTROL_RESPONSE_T			control_response_param;
+	R2H_TC_CHANNEL_STOP_MODE_T					stop_mode;
+}R2H_TC_CHANNEL_CONTROL_BASIC_PARAM_T;
+
+typedef enum R2H_TC_CHANNEL_ACTION_MODE
+{
+	R2H_TC_CHANNEL_ACTION_MODE_DIRECT						= 0x00,
+	R2H_TC_CHANNEL_ACTION_MODE_REVERSE						= 0x01,
+	__R2H_TC_CHANNEL_ACTION_MODE							= 0xFFFFFFFF
+}R2H_TC_CHANNEL_ACTION_MODE_T;
+
+typedef struct R2H_TC_CHANNEL_LIMITER_SETTING
+{
+	R2H_INT16									sv_upper_limiter; //default tc1300/rtd6000
+	R2H_INT16									sv_lower_limiter; //default tc0/rtd-2000
+	R2H_INT16									sv_rise_rate_limiter; //default Disable(0) range 0-full scale
+	R2H_INT16									sv_drop_rate_limiter; //default Disable(0) range 0-full scale
+	R2H_INT16									sv_variation_limiter_unit_time; //default 0(60s) range 1-3600
+	R2H_INT16									mvh_upper_limiter; //default 1000 range -50-1050/0-1050 mv_upper_limiter > mv_lower_limiter
+	R2H_INT16									mv_lower_limiter; //default 0 range -50-1050 mv_upper_limiter > mv_lower_limiter when heating cooling == 0
+
+	R2H_INT16									mv_variation_counter_limit; //default 0 range 0-1000
+}R2H_TC_CHANNEL_LIMITER_SETTING_T;
+
+typedef struct R2H_TC_CHANNEL_TEMP_RISE_COMPLETION_SETTING
+{
+	R2H_INT16									range; //default 1 range 1-100
+	R2H_INT16 									soak; //defalut 0(min) range 0-3600(min)
+}R2H_TC_CHANNEL_TEMP_RISE_COMPLETION_SETTING_T;
+
+typedef enum R2H_TC_CHANNEL_SENSOR_CORRECTION_METHOD
+{
+	R2H_TC_CHANNEL_SENSOR_ONE_POINT_CORRECTION 				= 0x00,
+	//R2H_TC_CHANNEL_SENSOR_TWO_POINT_CORRECTION			= 0x01, //Not support yet
+	__R2H_TC_CHANNEL_SENSOR_CORRECTION_METHOD				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_SENSOR_CORRECTION_METHOD_T;
+
+typedef struct R2H_TC_CHANNEL_SENSOR_CORRECTION_SETTING
+{
+	R2H_TC_CHANNEL_FUNCTION_SWITCH_T			enable;
+	R2H_TC_CHANNEL_SENSOR_CORRECTION_METHOD_T 	method;
+	R2H_INT16									value; //default 0 range -full scale-full scale
+}R2H_TC_CHANNEL_SENSOR_CORRECTION_SETTING_T;
+
+typedef enum R2H_TC_CHANNEL_ALERT_MODE
+{
+	R2H_TC_CHANNEL_NO_ALERT						 			= 0x00,
+	
+	R2H_TC_CHANNEL_PV_UPPER_LIMIT_ALERT						= 0x01,//value within the temperature measuring range of input range
+	R2H_TC_CHANNEL_PV_LOWER_LIMIT_ALERT						= 0x02,//value within the temperature measuring range of input range
+	R2H_TC_CHANNEL_PV_SVM_UPPER_LIMIT_ALERT					= 0x03,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SVM_LOWER_LIMIT_ALERT					= 0x04,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SVM_UPPER_LOWER_LIMIT_ALERT			= 0x05,//range 0-fullscale
+	R2H_TC_CHANNEL_PV_SVM_WITHIN_RANGE_ALERT				= 0x06,//range 0-fullscale
+	
+	R2H_TC_CHANNEL_PV_UPPER_LIMIT_ALERT_W					= 0x07,//value within the temperature measuring range of input range
+	R2H_TC_CHANNEL_PV_LOWER_LIMIT_ALERT_W					= 0x08,//value within the temperature measuring range of input range
+	R2H_TC_CHANNEL_PV_SVM_UPPER_LIMIT_ALERT_W				= 0x09,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SVM_LOWER_LIMIT_ALERT_W				= 0x0A,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SVM_UPPER_LOWER_LIMIT_ALERT_W			= 0x0B,//range 0-fullscale
+	
+	R2H_TC_CHANNEL_PV_SVM_UPPER_LIMIT_ALERT_RW				= 0x0C,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SVM_LOWER_LIMIT_ALERT_RW				= 0x0D,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SVM_UPPER_LOWER_LIMIT_ALERT_RW		= 0x0E,//range 0-fullscale
+	
+	R2H_TC_CHANNEL_PV_SV_UPPER_LIMIT_ALERT					= 0x0F,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SV_LOWER_LIMIT_ALERT					= 0x10,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SV_UPPER_LOWER_LIMIT_ALERT			= 0x11,//range 0-fullscale
+	R2H_TC_CHANNEL_PV_SV_WITHIN_RANGE_ALERT					= 0x12,//range 0-fullscale
+	
+	R2H_TC_CHANNEL_PV_SV_UPPER_LIMIT_ALERT_W				= 0x13,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SV_LOWER_LIMIT_ALERT_W				= 0x14,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SV_UPPER_LOWER_LIMIT_ALERT_W			= 0x15,//range 0-fullscale
+	
+	R2H_TC_CHANNEL_PV_SV_UPPER_LIMIT_ALERT_RW				= 0x16,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SV_LOWER_LIMIT_ALERT_RW				= 0x17,//range -full scale-full scale
+	R2H_TC_CHANNEL_PV_SV_UPPER_LOWER_LIMIT_ALERT_RW			= 0x18,//range 0-fullscale
+	
+	__R2H_TC_CHANNEL_ALERT_MODE								= 0xFFFFFFFF
+}R2H_TC_CHANNEL_ALERT_MODE_T;
+
+typedef struct R2H_TC_CHANNEL_ALERT_FUNCTION_SETTING
+{
+	R2H_INT16									dead_band; //default 5 range 0-full scale
+	R2H_INT16									delay; //default 0 range 0-30000(times)
+	R2H_TC_CHANNEL_ALERT_MODE_T					alert0_mode; //default R2H_TC_CHANNEL_NO_ALERT
+	R2H_TC_CHANNEL_ALERT_MODE_T					alert1_mode;
+	R2H_TC_CHANNEL_ALERT_MODE_T					alert2_mode;
+	R2H_TC_CHANNEL_ALERT_MODE_T					alert3_mode;
+	R2H_INT16									alert0_value; 
+	R2H_INT16									alert1_value; 
+	R2H_INT16									alert2_value; 
+	R2H_INT16									alert3_value; 
+}R2H_TC_CHANNEL_ALERT_FUNCTION_SETTING_T;
+
+typedef enum R2H_TC_CHANNEL_DERIVATIVE_ACTION
+{
+	R2H_TC_CHANNEL_MEASURED_VALUE_DERIVATIVE				= 0x00,
+	R2H_TC_CHANNEL_DEVIATION_DERIVATIVE						= 0x01,
+	__R2H_TC_CHANNEL_DERIVATIVE_ACTION						= 0xFFFFFFFF
+}R2H_TC_CHANNEL_DERIVATIVE_ACTION_T;
+
+typedef enum R2H_TC_CHANNEL_TEMPERATURE_CONVERSION
+{
+	R2H_TC_CHANNEL_TEMPERATURE_CONVERSION_NOT_USED			= 0x00,
+	R2H_TC_CHANNEL_TEMPERATURE_CONVERSION_USED				= 0x01,
+	__R2H_TC_CHANNEL_TEMPERATURE_CONVERSION					= 0xFFFFFFFF
+}R2H_TC_CHANNEL_TEMPERATURE_CONVERSION_T;
+
+typedef enum R2H_TC_CHANNEL_COOLING_METHOD
+{
+	R2H_TC_CHANNEL_COOLING_METHOD_AIR						= 0x00,
+	R2H_TC_CHANNEL_COOLING_METHOD_WATER						= 0x01,
+	R2H_TC_CHANNEL_COOLING_METHOD_LINEAR					= 0x03,
+	__R2H_TC_CHANNEL_COOLING_METHOD							= 0xFFFFFFFF
+}R2H_TC_CHANNEL_COOLING_METHOD_T;
+
+typedef struct R2H_TC_CHANNEL_HEATING_COOLING_CONTROL_SETTING
+{
+	R2H_TC_CHANNEL_TEMPERATURE_CONVERSION_T		temperature_conversion; //default R2H_TC_CHANNEL_TEMPERATURE_CONVERSION_NOT_USED
+	R2H_UINT16									control_cool_output_period; //default 30.0s range 0.5s-100.0s
+	R2H_INT16									mvc_upper_limiter; //default 1000 range 0-1050 
+	R2H_TC_CHANNEL_COOLING_METHOD_T				cooling_method; //default R2H_TC_CHANNEL_COOLING_METHOD_AIR
+	R2H_INT16 									control_overlap_dead_band; //default 0 range -full scale-full scale
+}R2H_TC_CHANNEL_HEATING_COOLING_CONTROL_SETTING_T;
+
+typedef enum R2H_TC_CHANNEL_PV_SCALING_FUNCTION_SWITCH
+{
+	R2H_TC_CHANNEL_PV_SCALING_ENABLE						= 0x01,
+	R2H_TC_CHANNEL_PV_SCALING_DISABLE						= 0x00,
+	__R2H_TC_CHANNEL_PV_SCALING_FUNCTION_SWITCH				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_PV_SCALING_FUNCTION_SWITCH_T;
+
+typedef struct R2H_TC_CHANNEL_PV_SCALING_SETTING
+{
+	R2H_TC_CHANNEL_PV_SCALING_FUNCTION_SWITCH_T				enable;
+	R2H_INT16												upper_limit; //default 0 range -32000-32000
+	R2H_INT16												lower_limit; //default 0 range -32000-32000
+}R2H_TC_CHANNEL_PV_SCALING_SETTING_T;
+	
+typedef enum R2H_TC_CHANNEL_SELF_TUNING_MODE
+{
+	R2H_TC_CHANNEL_SELF_TUNING_DO_NOT_RUN					= 0x00,
+	R2H_TC_CHANNEL_SELF_TUNING_PID_ONLY						= 0x01,
+	R2H_TC_CHANNEL_SELF_TUNING_STR_ONLY						= 0x02,
+	R2H_TC_CHANNEL_SELF_TUNING_PID_STR						= 0x03,
+	R2H_TC_CHANNEL_SELF_TUNING_PID_VIBRATION				= 0x04,
+	__R2H_TC_CHANNEL_SELF_TUNING_MODE						= 0xFFFFFFFF
+}R2H_TC_CHANNEL_SELF_TUNING_MODE_T;
+
+typedef struct R2H_TC_CHANNEL_PV_RATE_ALARM_SETTING
+{
+	R2H_TC_CHANNEL_FUNCTION_SWITCH_T					enable;
+	R2H_INT16											cycle; //default 1 range 1-6000
+	R2H_INT16											upper_limit; //default 0
+	R2H_INT16											lower_limit; //default 0
+}R2H_TC_CHANNEL_PV_RATE_ALARM_SETTING_T;
+
+typedef enum R2H_TC_CHANNEL_PP_CONTROL_STOP_OPERATION_T
+{
+	R2H_TC_CHANNEL_PP_CONTROL_STOP_CLOSE_OFF_OPEN_OFF		= 0x00,
+	R2H_TC_CHANNEL_PP_CONTROL_STOP_CLOSE_ON_OPEN_OFF		= 0x01,
+	R2H_TC_CHANNEL_PP_CONTROL_STOP_CLOSE_OFF_OPEN_ON		= 0x02,
+	R2H_TC_CHANNEL_PP_CONTROL_STOP_OPERATION				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_PP_CONTROL_STOP_OPERATION_T;
+
+typedef struct R2H_TC_CHANNEL_PP_CONTROL_SETTING
+{
+	R2H_INT16											neutral_band; //default 20 range 1-100(0.1-10.0%)
+	R2H_INT16											motor_time; //default 10 range 5-1000(s)
+	R2H_INT16											integration_limit; //default 1500 range 0-2000(0.0 to 200.0%)
+	R2H_TC_CHANNEL_PP_CONTROL_STOP_OPERATION_T			stop_operation; //default R2H_TC_CHANNEL_PP_CONTROL_STOP_CLOSE_OFF_OPEN_OFF
+}R2H_TC_CHANNEL_PP_CONTROL_SETTING_T;
+
+typedef struct R2H_TC_CHANNEL_LOOP_DISCONNECTION_SETTING
+{
+	R2H_INT16											sv_dead_band;//default 0 range 0-full scale
+	R2H_INT16											judgement_time;//default 480s range 0-7200s
+}R2H_TC_CHANNEL_LOOP_DISCONNECTION_SETTING_T;
+
+typedef enum R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION
+{
+	R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION_DISABLE			= 0x00,
+	R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION_ENABLE				= 0x01,
+	__R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION					= 0xFFFFFFFF
+}R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION_T;
+
+typedef enum R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP
+{
+	R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP_DISABLE				= 0x00,
+	R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP_ENABLE				= 0x01,
+	__R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP						= 0xFFFFFFFF
+}R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP_T;
+
+typedef struct R2H_TC_CHANNEL_AUTO_TUNING_SETTING
+{
+	R2H_TC_CHANNEL_AT_MODE_SELECTION_T					mode;//default R2H_TC_CHANNEL_AT_STANADARD_MODE
+	R2H_INT16											error_judgement_time;//defalut 120 range 1-120min
+	R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION_T				detection_loop_disconnection; //default R2H_TC_CHANNEL_AT_LOOP_DISCONNECTION_DISABLE
+	R2H_INT16											bias; //default 0 range -full scale-full scale
+	R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP_T					auto_backup;//default R2H_TC_CHANNEL_AT_AUTO_PID_BACKUP_DISABLE
+}R2H_TC_CHANNEL_AUTO_TUNING_SETTING_T;
+
+typedef struct R2H_TC_CHANNEL_FF_CONTROL_SETTING
+{
+	R2H_INT16											disturbance_judgment_position;//default 0 range -full scale-full scale
+	R2H_INT16											sv_return_adjustment;//default 0 range 0-10
+}R2H_TC_CHANNEL_FF_CONTROL_SETTING_T;
+
+
+typedef enum R2H_TC_CHANNEL_SIMULTANEOUS_RISE_AT_MODE
+{
+	R2H_TC_CHANNEL_NORMAL_AUTO_TUNING						= 0x00,
+	R2H_TC_CHANNEL_SIMULTANEOUS_RISE_AT						= 0x01,
+	__R2H_TC_CHANNEL_SIMULTANEOUS_RISE_AT_MODE				= 0xFFFFFFFF
+}R2H_TC_CHANNEL_SIMULTANEOUS_RISE_AT_MODE_T;
+
+typedef struct R2H_TC_CHANNEL_SIMULTANEOUS_RISE_SETTING
+{
+	R2H_TC_CHANNEL_SIMULTANEOUS_RISE_AT_MODE_T			at_mode; //default R2H_TC_CHANNEL_NORMAL_AUTO_TUNING
+	R2H_INT16											group;//default 0
+}R2H_TC_CHANNEL_SIMULTANEOUS_RISE_SETTING_T;
+
+typedef struct R2H_TC_CHANNEL_STARTUP_PARAM
+{
+	R2H_TC_CHANNEL_CONTROL_BASIC_PARAM_T				control_basic_param;
+	R2H_TC_CHANNEL_ACTION_MODE_T						mv_action_mode;
+	R2H_TC_CHANNEL_LIMITER_SETTING_T					limiter;
+	R2H_TC_CHANNEL_TEMP_RISE_COMPLETION_SETTING_T		rise_completion;
+	R2H_INT16											sv_adjustment_dead_band; // default 5 range 0-full scale
+	R2H_INT16											pv_primary_delay; //default 0 range 0-100
+	R2H_TC_CHANNEL_SENSOR_CORRECTION_SETTING_T			sensor_correction;
+	R2H_TC_CHANNEL_ALERT_FUNCTION_SETTING_T				alert_function;
+	R2H_TC_CHANNEL_DERIVATIVE_ACTION_T					derivative_action; // default Measured value derivation
+	R2H_INT16											number_of_moving_averaging; // default 2 range 2-10(times)
+	R2H_TC_CHANNEL_HEATING_COOLING_CONTROL_SETTING_T	heating_cooling_control;
+	R2H_TC_CHANNEL_PV_SCALING_SETTING_T					pv_scaling_function;
+	R2H_TC_CHANNEL_SELF_TUNING_MODE_T					selftuning_mode;
+	R2H_TC_CHANNEL_PV_RATE_ALARM_SETTING_T				pv_rate_alarm;
+	R2H_TC_CHANNEL_PP_CONTROL_SETTING_T					pp_control;
+	R2H_TC_CHANNEL_LOOP_DISCONNECTION_SETTING			loop_disconnection_detection;
+	R2H_TC_CHANNEL_AUTO_TUNING_SETTING_T				auto_tuning;
+	R2H_TC_CHANNEL_FF_CONTROL_SETTING_T					ff_control;
+	R2H_TC_CHANNEL_SIMULTANEOUS_RISE_SETTING_T			simultaneous_rise;
+	R2H_INT16											overshoot_suppression_level;//default 0 range 0-4
+	R2H_INT16											peak_current_suppression_group;// default 0 range 0-4 
+}R2H_TC_CHANNEL_STARTUP_PARAM_T;
+
+typedef enum R2H_TC_DEVICE_AUTOMATIC_SETTING
+{
+	R2H_TC_DEVICE_AUTOMATIC_SETTING_DISABLE				= 0x00,
+	R2H_TC_DEVICE_AUTOMATIC_SETTING_ENABLE				= 0x01,
+	__R2H_TC_DEVICE_AUTOMATIC_SETTING					= 0xFFFFFFFF
+}R2H_TC_DEVICE_AUTOMATIC_SETTING_T;
+
+typedef enum R2H_TC_DEVICE_PID_CONTINUATION_FLAG
+{
+	R2H_TC_DEVICE_PID_CONTINUATION_STOP					= 0x00,
+	R2H_TC_DEVICE_PID_CONTINUATION_CONTINUE				= 0x01,
+	__R2H_TC_DEVICE_PID_CONTINUATION_FLAG				= 0xFFFFFFFF
+}R2H_TC_DEVICE_PID_CONTINUATION_FLAG_T;
+
+typedef enum R2H_TC_DEVICE_MV_RESOLUTION
+{
+	R2H_TC_DEVICE_MV_RESOLUTION_4000					= 0x00,
+	R2H_TC_DEVICE_MV_RESOLUTION_12000					= 0x01,
+	R2H_TC_DEVICE_MV_RESOLUTION_16000					= 0x02,
+	R2H_TC_DEVICE_MV_RESOLUTION_20000					= 0x03,
+	R2H_TC_DEVICE_MV_RESOLUTION_32000					= 0x04,
+	
+	__R2H_TC_DEVICE_MV_RESOLUTION						= 0xFFFFFFFF
+}R2H_TC_DEVICE_MV_RESOLUTION_T;
+
+#pragma pack()
+
+
+#endif /* R2H_EXTMODULE_TEMP_CTL_DEVICE_DEF_H_ */

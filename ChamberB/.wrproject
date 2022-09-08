@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wrxml>
+    <properties platform="VxWorks" platform_name="vxworks-6.9" root="1" type="DownloadableKernelModuleProject"/>
+    <attributes>
+        <mapAttribute>
+            <intAttribute key="BuildSupportEnabled" value="1"/>
+            <booleanAttribute key="BuildTargetCentric" value="true"/>
+            <stringAttribute key="BLD::Info|cmd" value="%makeprefix% make --no-print-directory"/>
+            <listAttribute key="BLD::Info|GlobalMacros">
+                <stringAttribute value="PROJECT_TYPE"/>
+                <stringAttribute value="DEFINES"/>
+                <stringAttribute value="EXPAND_DBG"/>
+            </listAttribute>
+            <stringAttribute key="BLD::Info|GlobalMacro|PROJECT_TYPE" value="DKM"/>
+            <stringAttribute key="BLD::Info|GlobalMacro|DEFINES" value=""/>
+            <stringAttribute key="BLD::Info|GlobalMacro|EXPAND_DBG" value="0"/>
+            <listAttribute key="BLD::Info|Macros">
+                <stringAttribute value="VX_CPU_FAMILY"/>
+                <stringAttribute value="CPU"/>
+                <stringAttribute value="TOOL_FAMILY"/>
+                <stringAttribute value="TOOL"/>
+                <stringAttribute value="TOOL_PATH"/>
+                <stringAttribute value="CC_ARCH_SPEC"/>
+                <stringAttribute value="VSB_DIR"/>
+                <stringAttribute value="VSB_CONFIG_FILE"/>
+                <stringAttribute value="LIBPATH"/>
+                <stringAttribute value="LIBS"/>
+            </listAttribute>
+            <listAttribute key="BLD::Info|Tools">
+                <stringAttribute value="C-Compiler"/>
+                <stringAttribute value="C++-Compiler"/>
+                <stringAttribute value="Linker"/>
+                <stringAttribute value="Partial Image Linker"/>
+                <stringAttribute value="Librarian"/>
+                <stringAttribute value="Assembler"/>
+            </listAttribute>
+            <stringAttribute key="BLD::Info|Tool|C-Compiler|sigs" value="*.c"/>
+            <booleanAttribute key="BLD::Info|Tool|C-Compiler|object" value="true"/>
+            <booleanAttribute key="BLD::Info|Tool|C-Compiler|passAble" value="false"/>
+            <stringAttribute key="BLD::Info|Tool|C++-Compiler|sigs" value="*.cpp;*.CPP;*.C;*.cxx;*.cc"/>
+            <booleanAttribute key="BLD::Info|Tool|C++-Compiler|object" value="true"/>
+            <booleanAttribute key="BLD::Info|Tool|C++-Compiler|passAble" value="false"/>
+            <stringAttribute key="BLD::Info|Tool|Linker|sigs" value=""/>
+            <booleanAttribute key="BLD::Info|Tool|Linker|object" value="false"/>
+            <booleanAttribute key="BLD::Info|Tool|Linker|passAble" value="false"/>
+            <stringAttribute key="BLD::Info|Tool|Partial Image Linker|sigs" value=""/>
+            <booleanAttribute key="BLD::Info|Tool|Partial Image Linker|object" value="false"/>
+            <booleanAttribute key="BLD::Info|Tool|Partial Image Linker|passAble" value="true"/>
+            <stringAttribute key="BLD::Info|Tool|Librarian|sigs" value=""/>
+            <booleanAttribute key="BLD::Info|Tool|Librarian|object" value="false"/>
+            <booleanAttribute key="BLD::Info|Tool|Librarian|passAble" value="true"/>
+            <stringAttribute key="BLD::Info|Tool|Assembler|sigs" value="*.s"/>
+            <booleanAttribute key="BLD::Info|Tool|Assembler|object" value="true"/>
+            <booleanAttribute key="BLD::Info|Tool|Assembler|passAble" value="false"/>
+            <listAttribute key="BLD::Info|specs">
+                <stringAttribute value="ARMARCH7gnu_SMP"/>
+            </listAttribute>
+            <stringAttribute key="BLD::Info|redirDir|ARMARCH7gnu_SMP" value="ARMARCH7gnu_SMP"/>
+            <stringAttribute key="BLD::Info|Macro|VX_CPU_FAMILY|value|ARMARCH7gnu_SMP" value="arm"/>
+            <stringAttribute key="BLD::Info|Macro|CPU|value|ARMARCH7gnu_SMP" value="ARMARCH7"/>
+            <stringAttribute key="BLD::Info|Macro|TOOL_FAMILY|value|ARMARCH7gnu_SMP" value="gnu"/>
+            <stringAttribute key="BLD::Info|Macro|TOOL|value|ARMARCH7gnu_SMP" value="gnu"/>
+            <stringAttribute key="BLD::Info|Macro|TOOL_PATH|value|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Macro|CC_ARCH_SPEC|value|ARMARCH7gnu_SMP" value="-t7 -mfpu=vfp -mfloat-abi=softfp -mlong-calls"/>
+            <stringAttribute key="BLD::Info|Macro|VSB_DIR|value|ARMARCH7gnu_SMP" value="$(WIND_BASE)/target/lib_smp"/>
+            <stringAttribute key="BLD::Info|Macro|VSB_CONFIG_FILE|value|ARMARCH7gnu_SMP" value="$(VSB_DIR)/h/config/vsbConfig.h"/>
+            <stringAttribute key="BLD::Info|Macro|LIBPATH|value|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Macro|LIBS|value|ARMARCH7gnu_SMP" value=""/>
+            <listAttribute key="BLD::Info|Incl|ARMARCH7gnu_SMP">
+                <stringAttribute value="-I$(WIND_BASE)/target/h"/>
+                <stringAttribute value="-I$(WIND_BASE)/target/h/wrn/coreip"/>
+                <stringAttribute value="-I$(WS_ROOT_DIR)/ChamberB/OrbmentSDK/Include/R12CCPU-V"/>
+                <stringAttribute value="-I$(WS_ROOT_DIR)/ChamberB/OrbmentSDK/vx_R2H_Task/Startup"/>
+                <stringAttribute value="-I$(WS_ROOT_DIR)/ChamberB/OrbmentSDK/vx_R2H_Task/IOControl"/>
+                <stringAttribute value="-I$(WS_ROOT_DIR)/ChamberB/OrbmentSDK/vx_R2H_ExtModule/NetworkDevice/SMART-ECAT/SlavePDOProfile"/>
+            </listAttribute>
+            <listAttribute key="BLD::Info|Definess|ARMARCH7gnu_SMP">
+                <stringAttribute value="-DCPU=_VX_$(CPU)"/>
+                <stringAttribute value="-DTOOL_FAMILY=$(TOOL_FAMILY)"/>
+                <stringAttribute value="-DTOOL=$(TOOL)"/>
+                <stringAttribute value="-D_WRS_KERNEL"/>
+                <stringAttribute value="-D_WRS_VX_SMP"/>
+                <stringAttribute value="-D_WRS_CONFIG_SMP"/>
+                <stringAttribute value="-D_VSB_CONFIG_FILE=\&quot;$(VSB_DIR)/h/config/vsbConfig.h\&quot;"/>
+                <stringAttribute value="-DARMEL -DARMEL "/>
+                <stringAttribute value="-DARM_USE_VFP"/>
+                <stringAttribute value="-DARM_USE_VFP"/>
+                <stringAttribute value="-DIP_PORT_VXWORKS=69"/>
+            </listAttribute>
+            <stringAttribute key="BLD::Info|Tool|C-Compiler|derivedSigs|ARMARCH7gnu_SMP" value="*.o"/>
+            <stringAttribute key="BLD::Info|Tool|C-Compiler|dbgFlags|ARMARCH7gnu_SMP" value="-g -fsigned-char -D_R2H_DEBUG"/>
+            <stringAttribute key="BLD::Info|Tool|C-Compiler|nonDbgFlags|ARMARCH7gnu_SMP" value=" -O2  -fno-builtin -fsigned-char"/>
+            <stringAttribute key="BLD::Info|Tool|C-Compiler|flags|ARMARCH7gnu_SMP" value="$(CC_ARCH_SPEC) -ansi -fno-zero-initialized-in-bss  -Wall    -MD -MP -mlong-calls"/>
+            <stringAttribute key="BLD::Info|Tool|C-Compiler|cmd|ARMARCH7gnu_SMP" value="echo &quot;building $@&quot;;%ccompilerprefix% $(TOOL_PATH)ccarm %DebugModeFlags% %ToolFlags% %Defines% $(DEFINES) $(ADDED_CFLAGS) %Includes% $(ADDED_INCLUDES) -o %OutFile% -c %InFile%"/>
+            <stringAttribute key="BLD::Info|Tool|C++-Compiler|derivedSigs|ARMARCH7gnu_SMP" value="*.o"/>
+            <stringAttribute key="BLD::Info|Tool|C++-Compiler|dbgFlags|ARMARCH7gnu_SMP" value="-g -fsigned-char -D_R2H_DEBUG"/>
+            <stringAttribute key="BLD::Info|Tool|C++-Compiler|nonDbgFlags|ARMARCH7gnu_SMP" value=" -O2  -fno-builtin -fsigned-char"/>
+            <stringAttribute key="BLD::Info|Tool|C++-Compiler|flags|ARMARCH7gnu_SMP" value="$(CC_ARCH_SPEC) -ansi -fno-zero-initialized-in-bss  -Wall    -MD -MP -mlong-calls"/>
+            <stringAttribute key="BLD::Info|Tool|C++-Compiler|cmd|ARMARCH7gnu_SMP" value="echo &quot;building $@&quot;;%cppcompilerprefix% $(TOOL_PATH)ccarm %DebugModeFlags% %ToolFlags% %Defines% $(DEFINES) $(ADDED_C++FLAGS) %Includes% $(ADDED_INCLUDES) -o %OutFile% -c %InFile%"/>
+            <stringAttribute key="BLD::Info|Tool|Linker|derivedSigs|ARMARCH7gnu_SMP" value="*.out"/>
+            <stringAttribute key="BLD::Info|Tool|Linker|dbgFlags|ARMARCH7gnu_SMP" value="-g"/>
+            <stringAttribute key="BLD::Info|Tool|Linker|nonDbgFlags|ARMARCH7gnu_SMP" value=" -O2  -fno-builtin"/>
+            <stringAttribute key="BLD::Info|Tool|Linker|flags|ARMARCH7gnu_SMP" value="-T $(WIND_BASE)/target/h/tool/gnu/ldscripts/link.OUT"/>
+            <stringAttribute key="BLD::Info|Tool|Linker|cmd|ARMARCH7gnu_SMP" value="echo &quot;building $@&quot;;rm -f %OutFile%;nmarm %Objects% | tclsh $(WIND_BASE)/host/resource/hutils/tcl/munch.tcl -c arm -tags $(VSB_DIR)/tags/arm/ARMARCH7/common/dkm.tags &gt; $(OBJ_DIR)/ctdt.c;%ccompilerprefix% $(TOOL_PATH)ccarm %DebugModeFlags% $(CC_ARCH_SPEC) -fdollars-in-identifiers -Wall   $(ADDED_CFLAGS) %Includes% $(ADDED_INCLUDES)  %Defines% $(DEFINES) -o $(OBJ_DIR)/ctdt.o -c $(OBJ_DIR)/ctdt.c;%linkerprefix% $(TOOL_PATH)ccarm -r -nostdlib -Wl,-X -Wl,-EL %ToolFlags% -o %OutFile% $(OBJ_DIR)/ctdt.o %Objects% %Libraries% $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS) &amp;&amp; if [ &quot;$(EXPAND_DBG)&quot; = &quot;1&quot; ]; then plink &quot;$@&quot;;fi"/>
+            <stringAttribute key="BLD::Info|Tool|Partial Image Linker|derivedSigs|ARMARCH7gnu_SMP" value="*.o"/>
+            <stringAttribute key="BLD::Info|Tool|Partial Image Linker|dbgFlags|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Tool|Partial Image Linker|nonDbgFlags|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Tool|Partial Image Linker|flags|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Tool|Partial Image Linker|cmd|ARMARCH7gnu_SMP" value="echo &quot;building $@&quot;;%linkerprefix% $(TOOL_PATH)ccarm -r -nostdlib -Wl,-X -Wl,-EL %ToolFlags% -o %OutFile% %Objects% $(ADDED_OBJECTS) %Libraries% $(LIBPATH) $(LIBS) $(ADDED_LIBPATH) $(ADDED_LIBS) &amp;&amp; if [ &quot;$(EXPAND_DBG)&quot; = &quot;1&quot; ]; then plink &quot;$@&quot;;fi"/>
+            <stringAttribute key="BLD::Info|Tool|Librarian|derivedSigs|ARMARCH7gnu_SMP" value="*.a"/>
+            <stringAttribute key="BLD::Info|Tool|Librarian|dbgFlags|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Tool|Librarian|nonDbgFlags|ARMARCH7gnu_SMP" value=""/>
+            <stringAttribute key="BLD::Info|Tool|Librarian|flags|ARMARCH7gnu_SMP" value="crus"/>
+            <stringAttribute key="BLD::Info|Tool|Librarian|cmd|ARMARCH7gnu_SMP" value="echo &quot;building $@&quot;;%archiverprefix% $(TOOL_PATH)ararm %ToolFlags% %OutFile% %Objects% $(ADDED_OBJECTS)"/>
+            <stringAttribute key="BLD::Info|Tool|Assembler|derivedSigs|ARMARCH7gnu_SMP" value="*.o"/>
+            <stringAttribute key="BLD::Info|Tool|Assembler|dbgFlags|ARMARCH7gnu_SMP" value="-g"/>
+            <stringAttribute key="BLD::Info|Tool|Assembler|nonDbgFlags|ARMARCH7gnu_SMP" value=" -O2  -fno-builtin"/>
+            <stringAttribute key="BLD::Info|Tool|Assembler|flags|ARMARCH7gnu_SMP" value="$(CC_ARCH_SPEC) -ansi -fno-zero-initialized-in-bss   -xassembler-with-cpp  -MD -MP"/>
+            <stringAttribute key="BLD::Info|Tool|Assembler|cmd|ARMARCH7gnu_SMP" value="echo &quot;building $@&quot;;%assemblerprefix% $(TOOL_PATH)ccarm %DebugModeFlags% %ToolFlags% %Defines% $(DEFINES) $(ADDED_CFLAGS) %Includes% $(ADDED_INCLUDES) -o %OutFile% -c %InFile%"/>
+            <stringAttribute key="BLD::Info|redirRoot" value=""/>
+            <stringAttribute key="BLD::Info|defaultSpec" value="ARMARCH7gnu_SMP"/>
+        </mapAttribute>
+    </attributes>
+    <buildtargets>
+        <buildtarget buildtool="Linker" name="ChamberB" passed="false" targetname="ChamberB">
+            <contents>
+                <buildtargetreference name="/ChamberB/ChamberB_partialImage"/>
+            </contents>
+        </buildtarget>
+        <buildtarget buildtool="Partial Image Linker" name="ChamberB_partialImage" passed="true" targetname="ChamberB_partialImage">
+            <contents>
+                <folder name="/ChamberB" recursive="true"/>
+            </contents>
+        </buildtarget>
+    </buildtargets>
+</wrxml>

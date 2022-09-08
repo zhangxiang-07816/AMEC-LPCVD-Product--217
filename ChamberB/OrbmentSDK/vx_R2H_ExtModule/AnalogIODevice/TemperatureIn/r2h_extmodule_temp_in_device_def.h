@@ -1,0 +1,211 @@
+/*
+ * r2h_extmodule_temp_in_device_def.h
+ *
+ *  Created on: 2018-7-12
+ *      Author: CrazyHein
+ */
+
+#ifndef R2H_EXTMODULE_TEMP_IN_DEVICE_DEF_H_
+#define R2H_EXTMODULE_TEMP_IN_DEVICE_DEF_H_
+
+#include "../../r2h_extmodule_data_type.h"
+
+#pragma pack(2)
+
+#define R2H_TI_DEVICE_MAX_NUM_OF_CHANNEL									(8)
+#define R2H_TI_DEVICE_BIT_SIZE												(16)
+
+typedef enum R2H_TI_CHANNEL_FUNCTION_SWITCH
+{
+	R2H_TI_CHANNEL_FUNCTION_ENABLE 					= 0,
+	R2H_TI_CHANNEL_FUNCTION_DISABLE 				= 1,
+	
+	__R2H_TI_CHANNEL_FUNCTION_SWITCH				= 0xFFFFFFFF
+}R2H_TI_CHANNEL_FUNCTION_SWITCH_T;
+
+typedef enum R2H_TI_DEVICE_TYPE
+{
+	R2H_TI_DEVICE_THERMOCOUPLE_IN		= 0x01,
+	R2H_TI_DEVICE_RTD_IN				= 0x02,
+	
+	__R2H_TI_DEVICE_TYPE				= 0xFFFFFFFF
+}R2H_TI_DEVICE_TYPE_T;
+
+typedef enum R2H_TI_DEVICE_COLD_JUNCTION
+{
+	R2H_TI_DEVICE_WITH_COLD_JUNCTION_COMPENSATION			= 0x00,
+	R2H_TI_DEVICE_WITHOUT_COLD_JUNCTION_COMPENSATION		= 0x01,
+	
+	__R2H_TI_DEVICE_COLD_JUNCTION							= 0xFFFFFFFF
+}R2H_TI_DEVICE_COLD_JUNCTION_T;
+
+typedef enum R2H_TI_CHANNEL_CONVERSION_AT_DISCONNECTION
+{
+	R2H_TI_CHANNEL_UPSCALE									= 0x00,
+	R2H_TI_CHANNEL_DOWNSCALE								= 0x01,
+	R2H_TI_CHANNEL_ANY_VALUE								= 0x02,
+	R2H_TI_CHANNEL_VALUE_BEFORE_DISCONNECTION				= 0x03,
+	
+	__R2H_TI_CHANNEL_CONVERSION_AT_DISCONNECTION			= 0xFFFFFFFF
+}R2H_TI_CHANNEL_CONVERSION_AT_DISCONNECTION_T;
+
+typedef enum R2H_TI_CHANNEL_SIGNAL_RANGE
+{
+	R2H_TI_CHANNEL_THERMOCOUPLE_K 					= 0x0,
+	R2H_TI_CHANNEL_THERMOCOUPLE_E 					= 0x1,
+	R2H_TI_CHANNEL_THERMOCOUPLE_J 					= 0x2,
+	R2H_TI_CHANNEL_THERMOCOUPLE_T 					= 0x3,
+	R2H_TI_CHANNEL_THERMOCOUPLE_B 					= 0x4,
+	R2H_TI_CHANNEL_THERMOCOUPLE_R 					= 0x5,
+	R2H_TI_CHANNEL_THERMOCOUPLE_S 					= 0x6,
+	R2H_TI_CHANNEL_THERMOCOUPLE_N 					= 0x7,
+	
+	R2H_TI_CHANNEL_RTD_PT100_N200_P850 				= 0x0,
+	R2H_TI_CHANNEL_RTD_PT100_N20_P120 				= 0x1,
+	R2H_TI_CHANNEL_RTD_JPT100_N180_P600 			= 0x2,
+	R2H_TI_CHANNEL_RTD_JPT100_N20_P120 				= 0x3,
+	R2H_TI_CHANNEL_RTD_PT100_0_P200 				= 0x4,
+	R2H_TI_CHANNEL_RTD_JPT100_0_P200 				= 0x5,
+	R2H_TI_CHANNEL_RTD_NI100_N60_P250 				= 0x8,
+	R2H_TI_CHANNEL_RTD_PT50_N200_P650 				= 0x9,
+	
+	
+	__R2H_TI_CHANNEL_SIGNAL_RANGE					= 0xFFFFFFFF
+}R2H_TI_CHANNEL_SIGNAL_RANGE_T;
+
+
+typedef union R2H_TI_DEVICE_CHANNEL_ENABLE_MASK
+{
+	struct
+	{
+		R2H_UINT8	enable_channel_0 : 1;
+		R2H_UINT8	enable_channel_1 : 1;
+		R2H_UINT8	enable_channel_2 : 1;
+		R2H_UINT8	enable_channel_3 : 1;
+		R2H_UINT8	enable_channel_4 : 1;
+		R2H_UINT8	enable_channel_5 : 1;
+		R2H_UINT8	enable_channel_6 : 1;
+		R2H_UINT8	enable_channel_7 : 1;
+	};
+	R2H_UINT8 enable_mask_value;
+}R2H_TI_DEVICE_CHANNEL_ENABLE_MASK_T;
+
+typedef enum R2H_TI_CHANNEL_AVERAGE_METHOD
+{
+	R2H_TI_CHANNEL_SAMPLING_PROCESSING					= 0,
+	R2H_TI_CHANNEL_TIME_AVERAGING_PROCESSING			= 1,
+	R2H_TI_CHANNEL_COUNT_AVERAGING_PROCESSING			= 2,
+	R2H_TI_CHANNEL_MOVING_AVERAGING_PROCESSING			= 3,
+	R2H_TI_CHANNEL_PRIMARY_DELAY_FLITER					= 4,
+	
+	
+	__R2H_TI_CHANNEL_AVERAGE_METHOD						= 0xFFFFFFFF
+}R2H_TI_CHANNEL_AVERAGE_METHOD_T;
+
+#define R2H_TI_TIME_AVERAGE_DATA_MIN			(40)
+#define R2H_TI_TIME_AVERAGE_DATA_MAX			(5000)
+#define R2H_TI_COUNT_AVERAGE_DATA_MIN			(4)
+#define R2H_TI_COUNT_AVERAGE_DATA_MAX			(500)
+#define R2H_TI_MOVING_AVERAGE_DATA_MIN			(2)
+#define R2H_TI_MOVING_AVERAGE_DATA_MAX			(200)
+#define R2H_TI_FILTER_AVERAGE_DATA_MIN			(1)
+#define R2H_TI_FILTER_AVERAGE_DATA_MAX			(500)
+typedef union R2H_TI_CHANNEL_AVERAGE_METHOD_RELATED_DATA
+{
+	R2H_UINT16		time_average;//2-5000ms
+	R2H_UINT16		count_average;//4-62500times
+	R2H_UINT16		moving_average;//2-1000times
+	R2H_UINT16		primary_delay_fliter;//1-500times
+	R2H_UINT16		average_constant;
+}R2H_TI_CHANNEL_AVERAGE_METHOD_RELATED_DATA_T;
+
+typedef struct R2H_TI_CHANNEL_CONV_METHOD_SETTING
+{
+	R2H_TI_CHANNEL_AVERAGE_METHOD_T						average_method;
+	R2H_TI_CHANNEL_AVERAGE_METHOD_RELATED_DATA_T		data;
+}R2H_TI_CHANNEL_CONV_METHOD_SETTING_T;
+
+typedef struct R2H_TI_CHANNEL_SCALE_SETTING
+{
+	R2H_TI_CHANNEL_FUNCTION_SWITCH_T		scale_enable;
+	R2H_INT16								scale_range_upper_scale;
+	R2H_INT16								scale_range_lower_scale;
+	R2H_INT16								scale_width_upper_scale;
+	R2H_INT16								scale_width_lower_scale;
+}R2H_TI_CHANNEL_SCALE_SETTING_T;
+
+#define R2H_TI_RATE_ALARM_DETECTION_CYCLE_MIN	(1)
+#define R2H_TI_RATE_ALARM_DETECTION_CYCLE_MAX	(32000)
+typedef struct R2H_TI_CHANNEL_ALARM_SETTING
+{
+	struct
+	{
+		R2H_TI_CHANNEL_FUNCTION_SWITCH_T	alarm_enable;
+		R2H_INT16							alarm_upper_upper_limit;
+		R2H_INT16							alarm_upper_lower_limit;
+		R2H_INT16							alarm_lower_upper_limit;
+		R2H_INT16							alarm_lower_lower_limit;
+	}process_alarm_setting;
+	struct
+	{
+		R2H_TI_CHANNEL_FUNCTION_SWITCH_T	alarm_enable;
+		R2H_INT16							alarm_detection_cycle_in_times;
+		R2H_INT16							alarm_upper_limit;
+		R2H_INT16							alarm_lower_limit;
+	}rate_alarm_setting;
+}R2H_TI_CHANNEL_ALARM_SETTING_T;
+
+typedef struct R2H_TI_CHANNEL_DISCONNECTION_DETECTION_SETTING
+{
+	R2H_TI_CHANNEL_FUNCTION_SWITCH_T					detection_enable;
+	R2H_TI_CHANNEL_CONVERSION_AT_DISCONNECTION_T		conversion_setting;
+	R2H_INT16											conversion_value;
+}R2H_TI_CHANNEL_DISCONNECTION_DETECTION_SETTING_T;
+
+
+typedef struct R2H_TI_CHANNEL_STARTUP_PARAM
+{
+	R2H_TI_CHANNEL_SIGNAL_RANGE_T						range;
+	R2H_TI_CHANNEL_CONV_METHOD_SETTING_T				conv_method_setting;
+	R2H_TI_CHANNEL_SCALE_SETTING_T						scale_setting;
+	R2H_TI_CHANNEL_ALARM_SETTING_T						alarm_setting;
+	R2H_TI_CHANNEL_DISCONNECTION_DETECTION_SETTING_T	disconnection_detection_setting;
+}R2H_TI_CHANNEL_STARTUP_PARAM_T;
+
+#define R2H_TI_ERROR_HISTORY_SLOTS_CNT					(16)
+#define R2H_TI_ERROR_HISTORY_SLOT_SIZE_IN_WORD			(10)
+typedef struct R2H_TI_DEVICE_ERROR_HISTORY_DETAIL
+{
+	R2H_UINT16					error_code;
+	R2H_UINT16					year;
+	R2H_BYTE					day;
+	R2H_BYTE					month;
+	R2H_BYTE					minute;
+	R2H_BYTE					hour;
+	R2H_BYTE					day_of_the_week;
+	R2H_BYTE					second;
+	R2H_UINT16					millisecond;
+}R2H_TI_DEVICE_ERROR_HISTORY_DETAIL_T;
+
+
+#define R2H_TI_ALARM_HISTORY_SLOTS_CNT					(16)
+#define R2H_TI_ALARM_HISTORY_SLOT_SIZE_IN_WORD			(10)
+typedef struct R2H_TI_DEVICE_ALARM_HISTORY_DETAIL
+{
+	R2H_UINT16					alarm_code;
+	R2H_UINT16					year;
+	R2H_BYTE					day;
+	R2H_BYTE					month;
+	R2H_BYTE					minute;
+	R2H_BYTE					hour;
+	R2H_BYTE					day_of_the_week;
+	R2H_BYTE					second;
+	R2H_UINT16					millisecond;
+}R2H_TI_DEVICE_ALARM_HISTORY_DETAIL_T;
+
+#pragma pack()
+
+
+
+
+#endif /* R2H_EXTMODULE_TEMP_IN_DEVICE_DEF_H_ */

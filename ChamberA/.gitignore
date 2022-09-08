@@ -1,0 +1,6 @@
+#Orbment Runtime
+!OrbmentBinary/*
+
+#Excel IO List
+Parameters/IO_List/*.xls
+Parameters/IO_List/*.xlsx
