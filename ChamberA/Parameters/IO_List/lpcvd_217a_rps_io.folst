@@ -5816,7 +5816,7 @@ Add variables for temperature FF control</Description>
       </ExtensionModule>
       <ExtensionModule>
         <ID>0x0041</ID>
-        <Switch>0x00000000</Switch>
+        <Switch>0x11111111</Switch>
         <Name>R60RD8-G_0</Name>
         <Address>0x0120</Address>
       </ExtensionModule>
@@ -5840,7 +5840,7 @@ Add variables for temperature FF control</Description>
       </ExtensionModule>
       <ExtensionModule>
         <ID>0x0041</ID>
-        <Switch>0x00000000</Switch>
+        <Switch>0x11111111</Switch>
         <Name>R60RD8-G_1</Name>
         <Address>0x01B0</Address>
       </ExtensionModule>
