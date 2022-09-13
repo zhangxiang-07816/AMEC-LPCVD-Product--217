@@ -61,7 +61,7 @@
     <ExtensionModule>
       <ID>0x0041</ID>
       <Name>R60RD8_G</Name>
-      <Switch>0x00000000</Switch>
+      <Switch>0x11111111</Switch>
       <Address>0x0120</Address>
       <BitSize>0x0010</BitSize>
     </ExtensionModule>
@@ -89,7 +89,7 @@
     <ExtensionModule>
       <ID>0x0041</ID>
       <Name>R60RD8_G</Name>
-      <Switch>0x00000000</Switch>
+      <Switch>0x11111111</Switch>
       <Address>0x01B0</Address>
       <BitSize>0x0010</BitSize>
     </ExtensionModule>
