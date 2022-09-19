@@ -5396,10 +5396,63 @@ Bit5: Move to Relative Position</Comment>
       <Comment>0x0000: There is no error
 0x8001: Device Watchdog Error</Comment>
     </Variable>
+    <Variable>
+      <Name>Gas Monitor Availability</Name>
+      <DataType>USHORT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>0x0000: There is no error
+0x0001: SMART-ECAT cannot communicate with the slave
+0x0002: The slave status is not OP (Operational)</Comment>
+    </Variable>
+    <Variable>
+      <Name>Gas Monitor Partial Pressure Reading</Name>
+      <DataType>FLOAT</DataType>
+      <Unit>%</Unit>
+      <Comment>
+      </Comment>
+    </Variable>
+    <Variable>
+      <Name>Gas Monitor Active Exception Status</Name>
+      <DataType>BYTE</DataType>
+      <Unit>N/A</Unit>
+      <Comment>Bit 0: Active Device Warning
+Bit 1: Active Manufacturer Warning
+Bit 2: Active Device Error
+Bit 3: Active Manufacturer Error</Comment>
+    </Variable>
+    <Variable>
+      <Name>Gas Monitor Active Device Warning Details</Name>
+      <DataType>BYTE</DataType>
+      <Unit>N/A</Unit>
+      <Comment>
+      </Comment>
+    </Variable>
+    <Variable>
+      <Name>Gas Monitor Active Manufacture Warning Details</Name>
+      <DataType>BYTE</DataType>
+      <Unit>N/A</Unit>
+      <Comment>
+      </Comment>
+    </Variable>
+    <Variable>
+      <Name>Gas Monitor Active Device Error Details</Name>
+      <DataType>BYTE</DataType>
+      <Unit>N/A</Unit>
+      <Comment>
+      </Comment>
+    </Variable>
+    <Variable>
+      <Name>Gas Monitor Active Manufacturer Error Details</Name>
+      <DataType>BYTE</DataType>
+      <Unit>N/A</Unit>
+      <Comment>
+      </Comment>
+    </Variable>
   </AMECVariables>
   <TargetInfo>
     <Name>WCVD</Name>
-    <Description>Fully compatible with Excel WCVD IO List V1
+    <Description>Compatible with Horiba  Gas Monitor IR-407
+Fully compatible with Excel WCVD IO List V1
 With variables for RPS diagnostic purposes
 Compatible with AMEC LPCVD Project 617 Tool</Description>
     <VariableDictionary>
@@ -9359,15 +9412,11 @@ Compatible with AMEC LPCVD Project 617 Tool</Description>
     </Object>
     <Object>
       <Index>0x80003002</Index>
-      <Name>Endpoint WF6 Gas Pressure</Name>
+      <Name>Gas Monitor Partial Pressure Reading</Name>
       <Binding>
-        <Module>R60ADV8_0</Module>
-        <Channel>2</Channel>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10310001</ByteIndex>
       </Binding>
-      <Converter>
-        <UpScale>1000</UpScale>
-        <DownScale>-1000</DownScale>
-      </Converter>
     </Object>
     <Object>
       <Index>0x80003003</Index>
@@ -12473,6 +12522,38 @@ Compatible with AMEC LPCVD Project 617 Tool</Description>
       <Index>0xC0000045</Index>
       <Name>Over Pressure PV (N.O) [FB]</Name>
     </Object>
+    <Object>
+      <Index>0xC0000046</Index>
+      <Name>Gas Monitor Availability</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <NodeInfo>1031</NodeInfo>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000047</Index>
+      <Name>Gas Monitor Active Exception Status</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10310000</ByteIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000048</Index>
+      <Name>Gas Monitor Active Device Warning Details</Name>
+    </Object>
+    <Object>
+      <Index>0xC0000049</Index>
+      <Name>Gas Monitor Active Manufacture Warning Details</Name>
+    </Object>
+    <Object>
+      <Index>0xC000004A</Index>
+      <Name>Gas Monitor Active Device Error Details</Name>
+    </Object>
+    <Object>
+      <Index>0xC000004B</Index>
+      <Name>Gas Monitor Active Manufacturer Error Details</Name>
+    </Object>
   </Objects>
   <TxPDO>
     <DiagArea WordOffset="100" WordSize="100">
@@ -13025,6 +13106,12 @@ Compatible with AMEC LPCVD Project 617 Tool</Description>
       <Index>0xC0000040</Index>
       <Index>0xC0000041</Index>
       <Index>0xC0000042</Index>
+      <Index>0xC0000046</Index>
+      <Index>0xC0000047</Index>
+      <Index>0xC0000048</Index>
+      <Index>0xC0000049</Index>
+      <Index>0xC000004A</Index>
+      <Index>0xC000004B</Index>
     </BlockArea>
   </TxPDO>
   <RxPDO>
