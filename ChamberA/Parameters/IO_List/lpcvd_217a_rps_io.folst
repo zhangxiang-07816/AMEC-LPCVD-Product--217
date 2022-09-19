@@ -9726,8 +9726,8 @@ Add variables for temperature FF control</Description>
         <Channel>2</Channel>
       </Binding>
       <Converter>
-        <UpScale>1000</UpScale>
-        <DownScale>-1000</DownScale>
+        <UpScale>400</UpScale>
+        <DownScale>-400</DownScale>
       </Converter>
     </Object>
     <Object>
