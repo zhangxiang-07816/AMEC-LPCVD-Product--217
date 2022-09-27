@@ -5422,28 +5422,28 @@ Bit 3: Active Manufacturer Error</Comment>
     </Variable>
     <Variable>
       <Name>Gas Monitor Active Device Warning Details</Name>
-      <DataType>BYTE</DataType>
+      <DataType>UINT</DataType>
       <Unit>N/A</Unit>
       <Comment>
       </Comment>
     </Variable>
     <Variable>
       <Name>Gas Monitor Active Manufacture Warning Details</Name>
-      <DataType>BYTE</DataType>
+      <DataType>UINT</DataType>
       <Unit>N/A</Unit>
       <Comment>
       </Comment>
     </Variable>
     <Variable>
       <Name>Gas Monitor Active Device Error Details</Name>
-      <DataType>BYTE</DataType>
+      <DataType>UINT</DataType>
       <Unit>N/A</Unit>
       <Comment>
       </Comment>
     </Variable>
     <Variable>
       <Name>Gas Monitor Active Manufacturer Error Details</Name>
-      <DataType>BYTE</DataType>
+      <DataType>UINT</DataType>
       <Unit>N/A</Unit>
       <Comment>
       </Comment>
@@ -12541,18 +12541,34 @@ Compatible with AMEC LPCVD Project 617 Tool</Description>
     <Object>
       <Index>0xC0000048</Index>
       <Name>Gas Monitor Active Device Warning Details</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10310013</ByteIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0xC0000049</Index>
       <Name>Gas Monitor Active Manufacture Warning Details</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10310017</ByteIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0xC000004A</Index>
       <Name>Gas Monitor Active Device Error Details</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10310021</ByteIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0xC000004B</Index>
       <Name>Gas Monitor Active Manufacturer Error Details</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10310025</ByteIndex>
+      </Binding>
     </Object>
   </Objects>
   <TxPDO>
