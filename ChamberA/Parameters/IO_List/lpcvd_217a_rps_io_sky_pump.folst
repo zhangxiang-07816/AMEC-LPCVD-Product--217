@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<AMECIOList FormatVersion="2">
+<AMECIOList FormatVersion="3">
   <AMECVariables>
     <Variable>
       <Name>Dummy AI</Name>
@@ -5824,6 +5824,56 @@ Bit5: Move to Relative Position</Comment>
       <DataType>BIT</DataType>
       <Unit>N/A</Unit>
       <Comment>N/A</Comment>
+    </Variable>
+    <Variable>
+      <Name>Dry Pump Inlet Gate Valve</Name>
+      <DataType>BIT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>1:Stop; 0:Normal;</Comment>
+    </Variable>
+    <Variable>
+      <Name>Dry Pump Interlock Ready</Name>
+      <DataType>BIT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>1:OK (High level); 
+0: Not Ready (Low level)</Comment>
+    </Variable>
+    <Variable>
+      <Name>Dry Pump N2 Level Ready</Name>
+      <DataType>BIT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>1:OK (High level); 
+0: Not Ready (Low level)</Comment>
+    </Variable>
+    <Variable>
+      <Name>Dry Pump N2 Flow Low</Name>
+      <DataType>BIT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>1:N2 Flow Low; 0: Normal</Comment>
+    </Variable>
+    <Variable>
+      <Name>Dry Pump TxPdoState</Name>
+      <DataType>BIT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>True if pump data invalid</Comment>
+    </Variable>
+    <Variable>
+      <Name>Dry Pump Exception Status</Name>
+      <DataType>BYTE</DataType>
+      <Unit>N/A</Unit>
+      <Comment>ETG5003-1
+Bit 0: Device Warning
+Bit 1: Manufacturer Warning
+Bit 2: Device Error
+Bit 3: Manufacturer Error
+Bit 4...7: Reserved</Comment>
+    </Variable>
+    <Variable>
+      <Name>Reserve</Name>
+      <DataType>BIT</DataType>
+      <Unit>N/A</Unit>
+      <Comment>
+      </Comment>
     </Variable>
   </AMECVariables>
   <TargetInfo>
@@ -12869,7 +12919,7 @@ Add variables for temperature FF control</Description>
       <Name>Dry Pump Availability</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <NodeInfo>1031</NodeInfo>
+        <NodeInfo>1</NodeInfo>
       </Binding>
     </Object>
     <Object>
@@ -13418,63 +13468,75 @@ Add variables for temperature FF control</Description>
     </Object>
     <Object>
       <Index>0xC0000066</Index>
-      <Name>SKY_PUMP_OUT_PUMP</Name>
+      <Name>Dry Pump Roughing Status</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <BitIndex>10310007</BitIndex>
+        <BitIndex>10000</BitIndex>
       </Binding>
     </Object>
     <Object>
       <Index>0xC0000067</Index>
-      <Name>SKY_PUMP_OUT_ROOT</Name>
+      <Name>Dry Pump Booster 1 Status</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <BitIndex>10310006</BitIndex>
+        <BitIndex>10001</BitIndex>
       </Binding>
     </Object>
     <Object>
       <Index>0xC0000068</Index>
-      <Name>SKY_PUMP_OUT_LOCAL</Name>
+      <Name>Dry Pump Warning Status</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <BitIndex>10310005</BitIndex>
+        <BitIndex>10004</BitIndex>
       </Binding>
     </Object>
     <Object>
       <Index>0xC0000069</Index>
-      <Name>SKY_PUMP_OUT_WARING</Name>
+      <Name>Dry Pump Alarm Status</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <BitIndex>10310001</BitIndex>
+        <BitIndex>10005</BitIndex>
       </Binding>
     </Object>
     <Object>
       <Index>0xC000006A</Index>
-      <Name>SKY_PUMP_OUT_ALARM</Name>
+      <Name>Dry Pump Emergency Off Status</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <BitIndex>10310000</BitIndex>
+        <BitIndex>10006</BitIndex>
       </Binding>
     </Object>
     <Object>
       <Index>0x0000006B</Index>
-      <Name>SKY_PUMP_IN_PUMP</Name>
+      <Name>Dry Pump Roughing Control</Name>
       <Binding>
         <Module>ECAT_0</Module>
-        <BitIndex>10310002</BitIndex>
+        <BitIndex>10000</BitIndex>
       </Binding>
     </Object>
     <Object>
       <Index>0xC000006B</Index>
-      <Name>SKY_PUMP_DUMMY</Name>
+      <Name>Dry Pump Low Speed Mode Status</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10002</BitIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0xC000006C</Index>
-      <Name>SKY_PUMP_DUMMY</Name>
+      <Name>Dry Pump Remote Control Status</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10003</BitIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0xC000006D</Index>
-      <Name>SKY_PUMP_DUMMY</Name>
+      <Name>Dry Pump Inlet Gate Valve</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10233</BitIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0x40000049</Index>
@@ -13494,15 +13556,99 @@ Add variables for temperature FF control</Description>
     </Object>
     <Object>
       <Index>0x4000004D</Index>
-      <Name>SKY_PUMP_DUMMY</Name>
+      <Name>Dry Pump Low Speed Mode Control</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10003</BitIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0x4000004E</Index>
-      <Name>SKY_PUMP_DUMMY</Name>
+      <Name>Dry Pump Booster 2 Control</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10002</BitIndex>
+      </Binding>
     </Object>
     <Object>
       <Index>0x4000004F</Index>
-      <Name>SKY_PUMP_DUMMY</Name>
+      <Name>Dry Pump Booster 1 Control</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10001</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC000006E</Index>
+      <Name>Dry Pump Booster 2 Status</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10232</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC000006F</Index>
+      <Name>Dry Pump Interlock Ready</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10234</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000070</Index>
+      <Name>Dry Pump N2 Level Ready</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10235</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000071</Index>
+      <Name>Dry Pump N2 Flow Low</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10007</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000072</Index>
+      <Name>Dry Pump TxPdoState</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10236</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000073</Index>
+      <Name>Reserve</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10013</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000074</Index>
+      <Name>Reserve</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10014</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000075</Index>
+      <Name>Reserve</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <BitIndex>10015</BitIndex>
+      </Binding>
+    </Object>
+    <Object>
+      <Index>0xC0000076</Index>
+      <Name>Dry Pump Exception Status</Name>
+      <Binding>
+        <Module>ECAT_0</Module>
+        <ByteIndex>10030</ByteIndex>
+      </Binding>
     </Object>
   </Objects>
   <TxPDO>
@@ -13859,12 +14005,20 @@ Add variables for temperature FF control</Description>
       <Index>0xC000004D</Index>
       <Index>0xC0000066</Index>
       <Index>0xC0000067</Index>
+      <Index>0xC000006E</Index>
       <Index>0xC000006B</Index>
       <Index>0xC000006C</Index>
       <Index>0xC0000068</Index>
       <Index>0xC0000069</Index>
       <Index>0xC000006A</Index>
       <Index>0xC000006D</Index>
+      <Index>0xC000006F</Index>
+      <Index>0xC0000070</Index>
+      <Index>0xC0000071</Index>
+      <Index>0xC0000072</Index>
+      <Index>0xC0000073</Index>
+      <Index>0xC0000074</Index>
+      <Index>0xC0000075</Index>
       <Index>0x80000508</Index>
       <Index>0x80000509</Index>
       <Index>0x80000510</Index>
@@ -14053,6 +14207,7 @@ Add variables for temperature FF control</Description>
       <Index>0xC0000028</Index>
       <Index>0xC0000029</Index>
       <Index>0xC000002A</Index>
+      <Index>0xC0000076</Index>
       <Index>0xC0000038</Index>
       <Index>0xC0000039</Index>
       <Index>0xC000003A</Index>
